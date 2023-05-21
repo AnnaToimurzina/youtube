@@ -4,7 +4,7 @@ import os
 from googleapiclient.discovery import build
 
 # YT_API_KEY скопирован из гугла и вставлен в переменные окружения
-api_key: str = os.getenv('YT_API_KEY')
+api_key: str = os.getenv('YT_API_KEY', 'AIzaSyDalbhEObqKUPZFaIcUu3DMDk5r3alExc0')
 
 youtube = build('youtube', 'v3', developerKey=api_key)
 
