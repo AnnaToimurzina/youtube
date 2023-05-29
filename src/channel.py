@@ -5,8 +5,6 @@ from googleapiclient.discovery import build
 
 class Channel:
     """Класс для ютуб-канала"""
-    stored_data = {}
-
 
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
@@ -38,14 +36,15 @@ class Channel:
         return object_get
 
     def to_json(self, file):
-        self.stored_data['id'] = self.channel_id
-        self.stored_data['title'] = self.title
-        self.stored_data['description'] = self.description
-        self.stored_data['url'] = self.url
-        self.stored_data['subscriberCount'] = self.subscriberCount
-        self.stored_data['video_count'] = self.video_count
-        self.stored_data['viewCount'] = self.viewCount
+        channel_data = {
+            'id': self.channel_id,
+            'title': self.title,
+            'description': self.description,
+            'url': self.url,
+            'subscriberCount': self.subscriberCount,
+            'video_count': self.video_count,
+            'viewCount': self.viewCount,}
 
         with open(file, 'w', encoding='utf-8') as f:
-            json.dump(self.stored_data, f, indent=2, ensure_ascii=False)
+            json.dump(channel_data, f, indent=2, ensure_ascii=False)
 
