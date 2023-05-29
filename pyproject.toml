@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "youtube-analytics-project3"
+version = "0.1.0"
+description = ""
+authors = ["AnnaToimurzina <2402as@gmail,com>"]
+readme = "README.md"
+packages = [{include = "youtube_analytics_project3"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
