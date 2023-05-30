@@ -17,6 +17,34 @@ class Channel:
         self.video_count = channel['items'][0]['statistics']['videoCount']
         self.viewCount = channel['items'][0]['statistics']['viewCount']
 
+    def __str__(self) -> str:
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, highload):
+        return int(self.subscriberCount) + int(highload.subscriberCount)
+
+    def __sub__(self, highload):
+        return int(self.subscriberCount) - int(highload.subscriberCount)
+
+    def __gt__(self, highload):
+        return self.subscriberCount > highload.subscriberCount
+
+    def __ge__(self, highload):
+        return self.subscriberCount >= highload.subscriberCount
+
+    def __lt__(self, highload):
+        return self.subscriberCount < highload.subscriberCount
+
+    def __le__(self, highload):
+        return self.subscriberCount <= highload.subscriberCount
+
+    def __eq__(self, highload):
+        return self.subscriberCount == highload.subscriberCount
+
+
+
+
+
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
@@ -47,4 +75,5 @@ class Channel:
 
         with open(file, 'w', encoding='utf-8') as f:
             json.dump(channel_data, f, indent=2, ensure_ascii=False)
+
 
