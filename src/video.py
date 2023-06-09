@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
 import os
 
+
 class Video:
     def __init__(self, video_id: str):
         """Экземпляр инициализируется id канала."""
