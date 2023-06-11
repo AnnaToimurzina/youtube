@@ -6,11 +6,18 @@ class Video:
     def __init__(self, video_id: str):
         """Экземпляр инициализируется id канала."""
         self.video_id = video_id
-        video_res = Video.get_service().videos().list(part="snippet,statistics,contentDetails,topicDetails", id=video_id).execute()
-        self.video_title = video_res['items'][0]['snippet']['title']
-        self.view_count = video_res['items'][0]['statistics']['viewCount']
-        self.like_count = video_res['items'][0]['statistics']['likeCount']
-        self.comment_count = video_res['items'][0]['statistics']['commentCount']
+        try:
+            video_res = Video.get_service().videos().list(part="snippet,statistics,contentDetails,topicDetails", id=video_id).execute()
+            self.video_title = video_res['items'][0]['snippet']['title']
+            self.view_count = video_res['items'][0]['statistics']['viewCount']
+            self.like_count = video_res['items'][0]['statistics']['likeCount']
+            self.comment_count = video_res['items'][0]['statistics']['commentCount']
+        except:
+            self.video_title = None
+            self.view_count = None
+            self.like_count = None
+            self.comment_count = None
+
 
     def __repr__(self):
         return f'{self.__class__.__name__}'\
